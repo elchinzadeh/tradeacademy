@@ -1,4 +1,4 @@
-import './App.less'
+import 'assets/styles/App.less'
 import { Button } from 'antd';
 
 function App() {
