@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 
@@ -12,18 +13,18 @@ function MenuItem({ menuItem }: MenuItemProps) {
     if (menuItem.children?.length) {
         return (
             <Menu.SubMenu
-                key={menuItem.key}
+                key={menuItem.route}
                 icon={<UserOutlined />}
                 title={menuItem.title}
             >
                 {menuItem.children?.map((menu) => (
-                    <Menu.Item key={menu.key}>{menu.title}</Menu.Item>
+                    <Menu.Item key={menu.route}>{menu.title}</Menu.Item>
                 ))}
             </Menu.SubMenu>
         );
     } else {
         return (
-            <Menu.Item key={menuItem.key} icon={<UserOutlined />}>
+            <Menu.Item key={menuItem.route} icon={<UserOutlined />}>
                 {menuItem.title}
             </Menu.Item>
         );
@@ -37,14 +38,21 @@ function SideMenu() {
         setActiveSideMenu([sideMenu[0].key]);
     }, []);
 
+    const navigate = useNavigate();
+
+    function menuOnSelect(menu: { key: string; selectedKeys: string[] }) {
+        setActiveSideMenu(menu.selectedKeys);
+        navigate(menu.key);
+    }
+
     return (
-        <Layout.Sider width={200} className="site-layout-background">
+        <Layout.Sider width={200}>
             <Menu
                 mode="inline"
                 defaultSelectedKeys={[]}
                 defaultOpenKeys={[]}
                 selectedKeys={activeSideMenu}
-                onSelect={({ selectedKeys }) => setActiveSideMenu(selectedKeys)}
+                onSelect={menuOnSelect}
                 style={{ height: "100%", borderRight: 0 }}
             >
                 {sideMenu.map((menu) => MenuItem({ menuItem: menu }))}

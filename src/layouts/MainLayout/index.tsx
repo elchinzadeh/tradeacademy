@@ -1,5 +1,6 @@
 import React from "react";
 import { Layout } from "antd";
+import { Outlet } from "react-router-dom";
 
 import Breadcrumbs from "./Breadcrumbs";
 import Header from "./Header";
@@ -21,7 +22,7 @@ const MainLayout: React.FC = (props) => {
                             minHeight: 280,
                         }}
                     >
-                        {props.children}
+                        <Outlet />
                     </Layout.Content>
                 </Layout>
             </Layout>
