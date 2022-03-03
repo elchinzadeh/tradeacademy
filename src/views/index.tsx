@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 import MainLayout from "layouts/MainLayout";
 import About from "views/About";
+import Cryptocurrencies from "views/Cryptocurrencies";
 import Portfolio from "views/Portfolio";
 import NotFound from "views/NotFound";
 
@@ -13,6 +14,10 @@ function App() {
             <Routes>
                 <Route element={<MainLayout />}>
                     <Route path="about" element={<About />} />
+                    <Route
+                        path="cryptocurrencies"
+                        element={<Cryptocurrencies />}
+                    />
                     <Route path="portfolio" element={<Portfolio />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>

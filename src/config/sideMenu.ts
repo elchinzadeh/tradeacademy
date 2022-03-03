@@ -1,5 +1,10 @@
 const sideMenu = Object.freeze([
     {
+        title: "Cryptocurrencies",
+        key: "cryptocurrencies",
+        route: "/cryptocurrencies",
+    },
+    {
         title: "Portfolio",
         key: "portfolio",
         route: "/portfolio",

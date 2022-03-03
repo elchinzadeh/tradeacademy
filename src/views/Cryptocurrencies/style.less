@@ -1,0 +1,65 @@
+@import "assets/styles/colors.less";
+
+.currency {
+    &-name {
+        display: flex;
+        align-items: center;
+    }
+
+    &-icon {
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+    }
+}
+
+.circulating-supply {
+    cursor: pointer;
+
+    &__bar {
+        margin-top: 4px;
+        height: 10px;
+        width: 100%;
+        border-radius: 5px;
+        background: @gray-3;
+    }
+    &__filled {
+        background: @primary-color;
+        border-radius: inherit;
+        height: 100%;
+    }
+    &__tooltip-text {
+        display: flex;
+        justify-content: space-between;
+        white-space: nowrap;
+
+        :last-child {
+            margin-left: 30px;
+        }
+    }
+}
+
+.percent-change {
+    font-weight: 600;
+
+    &--increased {
+        color: @success-color;
+    }
+    &--decreased {
+        color: @error-color;
+    }
+    &--animate {
+        animation-name: percent-change-animation;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-out;
+    }
+}
+
+@keyframes percent-change-animation {
+    from {
+        filter: brightness(2);
+    }
+    to {
+        filter: brightness(1);
+    }
+}
