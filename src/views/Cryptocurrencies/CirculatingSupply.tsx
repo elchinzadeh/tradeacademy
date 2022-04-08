@@ -40,19 +40,21 @@ export default function CirculatingSupply({
     );
 
     return (
-        <Tooltip placement="bottom" title={tooltipText}>
-            <div className="circulating-supply">
-                {GF.formatNumber(+circulatingSupply)}&nbsp;
-                {currency}
-                {maxSupply && (
-                    <div className="circulating-supply__bar">
-                        <div
-                            className="circulating-supply__filled"
-                            style={{ width: percent + "%" }}
-                        />
-                    </div>
-                )}
-            </div>
-        </Tooltip>
+        <div data-testid="CirculatingSupply">
+            <Tooltip placement="bottom" title={tooltipText}>
+                <div className="circulating-supply">
+                    {GF.formatNumber(+circulatingSupply)}&nbsp;
+                    {currency}
+                    {maxSupply && (
+                        <div className="circulating-supply__bar">
+                            <div
+                                className="circulating-supply__filled"
+                                style={{ width: percent + "%" }}
+                            />
+                        </div>
+                    )}
+                </div>
+            </Tooltip>
+        </div>
     );
 }

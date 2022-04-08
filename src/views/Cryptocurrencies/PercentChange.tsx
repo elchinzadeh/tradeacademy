@@ -30,7 +30,11 @@ function PercentChange(props: PercentChangeProps) {
     ].join(" ");
 
     return (
-        <div className={className} ref={percentChangeEl}>
+        <div
+            data-testid="PercentChange"
+            className={className}
+            ref={percentChangeEl}
+        >
             {isIncreased ? <CaretUpOutlined /> : <CaretDownOutlined />}
             {GF.formatNumber(Number(props.percent) * 100, "#,##0.00 %")}
         </div>
